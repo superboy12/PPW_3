@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Datang di GameVerse (Steam Klon)</title>
+    
+    <!-- Memuat Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Konfigurasi Tailwind Kustom -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Roboto', 'sans-serif'], // Font UI standar ala Steam
+                    },
+                    colors: {
+                        'brand-accent': { // Aksen Biru Steam
+                            DEFAULT: '#3B82F6', // blue-500
+                            'light': '#60A5FA', // blue-400
+                            'dark': '#2563EB',  // blue-600
+                        },
+                        'brand-green': { // Aksen Hijau "Install" Steam
+                            DEFAULT: '#78b91f',
+                            'dark': '#619419',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Memuat Font Roboto dari Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Styling Scrollbar Kustom (ala Steam) */
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e293b; /* slate-800 */
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #475569; /* slate-600 */
+            border-radius: 20px;
+            border: 3px solid #1e293b; /* slate-800 */
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #64748b; /* slate-500 */
+        }
+        
+        /* Font smoothing */
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #0f172a; /* Latar belakang utama: slate-900 */
+        }
+    </style>
+</head>
+
+<!-- DIUBAH: Latar belakang 'slate' gelap -->
+<body class="font-sans bg-slate-900 text-slate-300">
+
+    <!-- ===== HEADER / NAVIGATION (STEAM 99%) ===== -->
+    <header class="bg-slate-950 shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Kiri: Logo & Menu Utama -->
+                <div class="flex items-center space-x-8">
+                    <!-- Logo Steam SVG -->
+                    <a href="#" class="flex-shrink-0 flex items-center">
+                        <svg class="h-10 w-auto" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="32" r="32" fill="#1E293B"/>
+                            <path d="M43.916 28.324c-2.046-1.39-3.411-3.69-3.411-6.31 0-4.14 3.36-7.5 7.5-7.5 3.331 0 6.16 2.186 7.123 5.222-3.793 2.15-8.084 6.31-11.212 8.588zm-9.352 7.02c-4.32 0-7.82-3.5-7.82-7.82s3.5-7.82 7.82-7.82 7.82 3.5 7.82 7.82-3.5 7.82-7.82 7.82zm.178 3.708c2.478.43 5.062.656 7.712.656 4.706 0 9.12-1.02 13.064-2.855-3.05 3.49-8.498 8.018-14.776 8.018-4.32 0-7.82-3.5-7.82-7.82 0-1.22.28-2.37.78-3.39L34.742 39.052zm-15.08 1.155c-2.05-1.39-3.41-3.69-3.41-6.31 0-4.14 3.36-7.5 7.5-7.5 3.33 0 6.16 2.186 7.12 5.222-3.79 2.15-8.08 6.31-11.21 8.588zm-9.35-7.02c-4.32 0-7.82-3.5-7.82-7.82s3.5-7.82 7.82-7.82S18.13 22.84 18.13 26.34s-3.5 7.82-7.82 7.82zm.18 3.708c2.48.43 5.06.656 7.71.656 4.71 0 9.12-1.02 13.06-2.855-3.05 3.49-8.5 8.018-14.77 8.018-4.32 0-7.82-3.5-7.82-7.82 0-1.22.28-2.37.78-3.39L10.49 39.052z" fill="#FFFFFF"/>
+                        </svg>
+                        <span class="text-3xl font-bold text-slate-100 ml-3">GameVerse</span>
+                    </a>
+                    
+                    <!-- Menu Desktop (Gaya Steam) -->
+                    <div class="hidden md:flex md:items-center md:space-x-6">
+                        <a href="#page-store" class="text-slate-200 hover:text-white font-medium text-sm uppercase tracking-wider transition duration-150">Toko</a>
+                        <a href="#page-community" class="text-slate-400 hover:text-white font-medium text-sm uppercase tracking-wider transition duration-150">Komunitas</a>
+                        <a href="#page-about" class="text-slate-400 hover:text-white font-medium text-sm uppercase tracking-wider transition duration-150">Tentang</a>
+                        <a href="#page-support" class="text-slate-400 hover:text-white font-medium text-sm uppercase tracking-wider transition duration-150">Dukungan</a>
+                    </div>
+                </div>
+                
+                <!-- Kanan: Aksi (Install & Login) -->
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="bg-brand-green text-white px-5 py-2 rounded-sm text-sm font-medium hover:bg-brand-green-dark transition duration-150 flex items-center space-x-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        <span>Install GameVerse</span>
+                    </a>
+                    <a href="#" class="text-slate-300 hover:text-white text-sm font-medium transition duration-150">
+                        Login
+                    </a>
+                    <span class="text-slate-500">|</span>
+                    <a href="#" class="text-slate-300 hover:text-white text-sm font-medium transition duration-150">
+                        Bahasa
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- ===== GAME UNGGULAN (FEATURED) ===== -->
+        <section id="page-store" class="mb-12">
+            <h2 class="text-2xl font-bold text-white uppercase tracking-wide mb-4">Unggulan & Direkomendasikan</h2>
+            <div class="relative w-full h-[400px] bg-slate-800 rounded-lg overflow-hidden shadow-2xl">
+                <img src="assets/gta v.jpg" alt="Game Unggulan" class="w-full h-full object-cover">
+                <div class="absolute bottom-0 left-0 p-8 bg-gradient-to-t from-black/80 to-transparent w-full">
+                    <h3 class="text-4xl font-black text-white uppercase">Grand Theft Auto VI</h3>
+                    <p class="text-lg text-slate-200 mt-2 max-w-2xl">Pre-order sekarang dan dapatkan bonus eksklusif. Rilis Musim Gugur 2025.</p>
+                    <div class="mt-4">
+                        <a href="#" class="bg-brand-accent text-white px-6 py-3 rounded-md text-base font-semibold shadow-lg hover:bg-brand-accent-dark transition duration-300">
+                            Pre-Order Sekarang
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PENAWARAN SPESIAL (HORIZONTAL SCROLL) ===== -->
+        <section id="special-offers" class="mb-12">
+            <h2 class="text-2xl font-bold text-white uppercase tracking-wide mb-4">Penawaran Spesial</h2>
+            <!-- Kontainer Scroll Horizontal -->
+            <div class="flex overflow-x-auto space-x-4 pb-4">
+                
+                <!-- Game 1 -->
+                <div class="flex-shrink-0 w-80 bg-slate-800 rounded-lg shadow-lg overflow-hidden group transition-all duration-300 transform hover:shadow-brand-accent/30">
+                    <img class="w-full h-40 object-cover" src="assets/rdr.jpg" alt="Sampul game Red Dead Redemption 2">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-white truncate uppercase">Red Dead Redemption 2</h3>
+                        <div class="flex items-center justify-end space-x-2 mt-4">
+                            <span class="text-xs line-through text-slate-500">Rp 640.000</span>
+                            <span class="text-xl font-bold text-brand-accent">Rp 320.000</span>
+                        </div>
+                        <a href="#" class="mt-3 block w-full text-center bg-brand-accent/20 text-brand-accent-light border border-brand-accent/50 rounded-sm py-1 font-medium hover:bg-brand-accent hover:text-white transition-all">
+                            Diskon 50%
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Game 2 -->
+                <div class="flex-shrink-0 w-80 bg-slate-800 rounded-lg shadow-lg overflow-hidden group transition-all duration-300 transform hover:shadow-brand-accent/30">
+                    <img class="w-full h-40 object-cover" src="assets/cyberpunk.jpg">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-white truncate uppercase">CyberPunk 2077</h3>
+                        <div class="flex items-center justify-end space-x-2 mt-4">
+                            <span class="text-xs line-through text-slate-500">Rp 749.000</span>
+                            <span class="text-xl font-bold text-brand-accent">Rp 374.500</span>
+                        </div>
+                        <a href="#" class="mt-3 block w-full text-center bg-brand-accent/20 text-brand-accent-light border border-brand-accent/50 rounded-sm py-1 font-medium hover:bg-brand-accent hover:text-white transition-all">
+                            Diskon 50%
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Game 3 -->
+                <div class="flex-shrink-0 w-80 bg-slate-800 rounded-lg shadow-lg overflow-hidden group transition-all duration-300 transform hover:shadow-brand-accent/30">
+                    <img class="w-full h-40 object-cover" src="assets/theWitcher.jpg">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-white truncate uppercase">The Witcher 3: Wild Hunt</h3>
+                        <div class="flex items-center justify-end space-x-2 mt-4">
+                            <span class="text-xs line-through text-slate-500">Rp 449.000</span>
+                            <span class="text-xl font-bold text-brand-accent">Rp 89.800</span>
+                        </div>
+                        <a href="#" class="mt-3 block w-full text-center bg-brand-accent/20 text-brand-accent-light border border-brand-accent/50 rounded-sm py-1 font-medium hover:bg-brand-accent hover:text-white transition-all">
+                            Diskon 80%
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Game 4 -->
+                <div class="flex-shrink-0 w-80 bg-slate-800 rounded-lg shadow-lg overflow-hidden group transition-all duration-300 transform hover:shadow-brand-accent/30">
+                    <img class="w-full h-40 object-cover" src="assets/EldenRing.jpg">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-white truncate uppercase">Elden Ring</h3>
+                        <div class="flex items-center justify-end space-x-2 mt-4">
+                            <!-- <span class="text-xs line-through text-slate-500">Rp 640.000</span> -->
+                            <span class="text-xl font-bold text-slate-200">Rp 899.000</span>
+                        </div>
+                        <a href="#" class="mt-3 block w-full text-center bg-slate-600/50 text-slate-200 border border-slate-500 rounded-sm py-1 font-medium hover:bg-slate-500 transition-all">
+                            Harga Penuh
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ===== POPULER (TOP SELLERS) SECTION ===== -->
+        <section id="page-popular" class="mb-12">
+            <h2 class="text-2xl font-bold text-white uppercase tracking-wide mb-4">Populer (Top Sellers)</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                
+                <!-- Kartu Game 1 -->
+                <div class="relative group rounded-lg overflow-hidden shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-brand-accent/30">
+                    <img class="w-full h-full object-cover aspect-[3/4]" src="assets/helldrivers.jpg" alt="Sampul game Helldivers 2">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <h3 class="font-bold text-lg text-white truncate uppercase">Helldivers 2</h3>
+                        <p class="text-sm text-slate-300">Co-op Shooter</p>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-lg font-bold text-brand-accent">Rp 579.000</span>
+                            <a href="#" class="text-sm bg-brand-accent text-white px-3 py-1 rounded-md hover:bg-brand-accent-dark transition-all">Beli</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Kartu Game 2 -->
+                <div class="relative group rounded-lg overflow-hidden shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-brand-accent/30">
+                    <img class="w-full h-full object-cover aspect-[3/4]" src="assets/baldursGate.jpg" alt="Sampul game Baldur's Gate 3">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <h3 class="font-bold text-lg text-white truncate uppercase">Baldur's Gate 3</h3>
+                        <p class="text-sm text-slate-300">CRPG</p>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-lg font-bold text-brand-accent">Rp 699.000</span>
+                            <a href="#" class="text-sm bg-brand-accent text-white px-3 py-1 rounded-md hover:bg-brand-accent-dark transition-all">Beli</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Kartu Game 3 -->
+                <div class="relative group rounded-lg overflow-hidden shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-brand-accent/30">
+                    <img class="w-full h-full object-cover aspect-[3/4]" src="assets/gta v.jpg" alt="Sampul game Grand Theft Auto V">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <h3 class="font-bold text-lg text-white truncate uppercase">Grand Theft Auto V</h3>
+                        <p class="text-sm text-slate-300">Open World, Action</p>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-lg font-bold text-brand-accent">Rp 250.000</span>
+                            <a href="#" class="text-sm bg-brand-accent text-white px-3 py-1 rounded-md hover:bg-brand-accent-dark transition-all">Beli</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Kartu Game 4 -->
+                <div class="relative group rounded-lg overflow-hidden shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-brand-accent/30">
+                    <img class="w-full h-full object-cover aspect-[3/4]" src="assets/pallword.jpg" alt="Sampul game Palworld">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <h3 class="font-bold text-lg text-white truncate uppercase">Palworld</h3>
+                        <p class="text-sm text-slate-300">Survival, Crafting</p>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-lg font-bold text-brand-accent">Rp 245.000</span>
+                            <a href="#" class="text-sm bg-brand-accent text-white px-3 py-1 rounded-md hover:bg-brand-accent-dark transition-all">Beli</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Kartu Game 5 -->
+                <div class="relative group rounded-lg overflow-hidden shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-brand-accent/30">
+                    <img class="w-full h-full object-cover aspect-[3/4]" src="assets/stardewValley.jpg">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <h3 class="font-bold text-lg text-white truncate uppercase">Stardew Valley</h3>
+                        <p class="text-sm text-slate-300">Farming Sim, Indie</p>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-lg font-bold text-brand-accent">Rp 119.000</span>
+                            <a href="#" class="text-sm bg-brand-accent text-white px-3 py-1 rounded-md hover:bg-brand-accent-dark transition-all">Beli</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Kartu Game 6 (Baris Baru) -->
+                <div class="relative group rounded-lg overflow-hidden shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-brand-accent/30">
+                    <img class="w-full h-full object-cover aspect-[3/4]" src="assets/valorant.jpg" alt="Sampul game Valorant">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <h3 class="font-bold text-lg text-white truncate uppercase">Valorant</h3>
+                        <p class="text-sm text-slate-300">Tactical Shooter</p>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-lg font-bold text-brand-green">Free to Play</span>
+                            <a href="#" class="text-sm bg-slate-200 text-slate-800 px-3 py-1 rounded-md hover:bg-slate-300 transition-all">Mainkan</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tambahkan 4 game lagi di sini jika perlu -->
+                <div class="relative group rounded-lg overflow-hidden shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-brand-accent/30">
+                    <img class="w-full h-full object-cover aspect-[3/4]" src="assets/got.jpg">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <h3 class="font-bold text-lg text-white truncate uppercase">Ghost of Tsushima</h3>
+                        <p class="text-sm text-slate-300">Adventure</p>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-lg font-bold text-brand-accent">Rp 300.000</span>
+                            <a href="#" class="text-sm bg-brand-accent text-white px-3 py-1 rounded-md hover:bg-brand-accent-dark transition-all">Beli</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative group rounded-lg overflow-hidden shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-brand-accent/30">
+                    <img class="w-full h-full object-cover aspect-[3/4]" src="assets/batman.jpg" alt="Sampul game Batman: Arkham Knight">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <h3 class="font-bold text-lg text-white truncate uppercase">Batman: Arkham Knight</h3>
+                        <p class="text-sm text-slate-300">Fighting, Adventure</p>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-lg font-bold text-brand-accent">Rp 450.000</span>
+                            <a href="#" class="text-sm bg-brand-accent text-white px-3 py-1 rounded-md hover:bg-brand-accent-dark transition-all">Beli</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative group rounded-lg overflow-hidden shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-brand-accent/30">
+                    <img class="w-full h-full object-cover aspect-[3/4]" src="assets/gowr.jpg" alt="Sampul game God of War Ragnarok">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <h3 class="font-bold text-lg text-white truncate uppercase">God of War Ragnarok</h3>
+                        <p class="text-sm text-slate-300">Adventure, Fighting</p>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-lg font-bold text-brand-accent">Rp 120.000</span>
+                            <a href="#" class="text-sm bg-brand-accent text-white px-3 py-1 rounded-md hover:bg-brand-accent-dark transition-all">Beli</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative group rounded-lg overflow-hidden shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-brand-accent/30">
+                    <img class="w-full h-full object-cover aspect-[3/4]" src="assets/theforest.jpg" alt="Sampul game The Forest">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <h3 class="font-bold text-lg text-white truncate uppercase">The Forest</h3>
+                        <p class="text-sm text-slate-300">Survival</p>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-lg font-bold text-brand-accent">Rp 99.000</span>
+                            <a href="#" class="text-sm bg-brand-accent text-white px-3 py-1 rounded-md hover:bg-brand-accent-dark transition-all">Beli</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ===== ABOUT SECTION ===== -->
+        <section id="page-about" class="page-section bg-slate-900 py-12">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-extrabold text-white sm:text-4xl uppercase">Tentang GameVerse</h2>
+                <p class="mt-4 text-lg text-slate-400">
+                    GameVerse adalah platform distribusi digital, manajemen hak digital, dan layanan jejaring sosial multipemain yang dikembangkan oleh GameVerse Corporation. Kami menyediakan instalasi dan pembaruan otomatis game, serta fitur komunitas seperti daftar teman dan grup, penyimpanan cloud, dan fungsionalitas obrolan suara dan dalam game.
+                </p>
+            </div>
+        </section>
+        
+        <!-- Placeholder untuk Komunitas (Nav Link) -->
+        <div id="page-community" class="pt-12"></div>
+
+
+        <!-- ===== SUPPORT FORM SECTION ===== -->
+        <section id="page-support" class="page-section bg-slate-900 py-12">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center">
+                    <h2 class="text-3xl font-extrabold text-white sm:text-4xl uppercase">Dukungan GameVerse</h2>
+                    <p class="mt-4 text-xl text-slate-400">
+                        Bagaimana kami bisa membantu Anda?
+                    </p>
+                </div>
+                <!-- Form Container -->
+                <div class="mt-12 bg-slate-800 p-8 rounded-lg shadow-2xl border border-slate-700">
+                    <form action="#" method="POST" class="grid grid-cols-1 gap-y-6">
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-slate-300">Email Anda</label>
+                            <div class="mt-1">
+                                <input id="email" name="email" type="email" autocomplete="email" class="py-3 px-4 block w-full shadow-sm focus:ring-brand-accent focus:border-brand-accent bg-slate-700 border-slate-600 rounded-md text-white placeholder-slate-400">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-slate-300">Subjek</label>
+                            <div class="mt-1">
+                                <input type="text" name="subject" id="subject" class="py-3 px-4 block w-full shadow-sm focus:ring-brand-accent focus:border-brand-accent bg-slate-700 border-slate-600 rounded-md text-white placeholder-slate-400">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-slate-300">Jelaskan Masalah Anda</label>
+                            <div class="mt-1">
+                                <textarea id="message" name="message" rows="4" class="py-3 px-4 block w-full shadow-sm focus:ring-brand-accent focus:border-brand-accent bg-slate-700 border-slate-600 rounded-md text-white placeholder-slate-400"></textarea>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="submit" class="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-lg text-base font-medium rounded-md text-white bg-brand-accent hover:bg-brand-accent-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-accent transition duration-300">
+                                Kirim Tiket Dukungan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER (STEAM 99%) ===== -->
+    <footer class="bg-slate-950 border-t border-slate-800 mt-12">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+            <!-- Logo di Footer -->
+            <div class="flex justify-center md:justify-start items-center space-x-4 mb-6">
+                <svg class="h-10 w-auto" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="32" cy="32" r="32" fill="#1E293B"/>
+                    <path d="M43.916 28.324c-2.046-1.39-3.411-3.69-3.411-6.31 0-4.14 3.36-7.5 7.5-7.5 3.331 0 6.16 2.186 7.123 5.222-3.793 2.15-8.084 6.31-11.212 8.588zm-9.352 7.02c-4.32 0-7.82-3.5-7.82-7.82s3.5-7.82 7.82-7.82 7.82 3.5 7.82 7.82-3.5 7.82-7.82 7.82zm.178 3.708c2.478.43 5.062.656 7.712.656 4.706 0 9.12-1.02 13.064-2.855-3.05 3.49-8.498 8.018-14.776 8.018-4.32 0-7.82-3.5-7.82-7.82 0-1.22.28-2.37.78-3.39L34.742 39.052zm-15.08 1.155c-2.05-1.39-3.41-3.69-3.41-6.31 0-4.14 3.36-7.5 7.5-7.5 3.33 0 6.16 2.186 7.12 5.222-3.79 2.15-8.08 6.31-11.21 8.588zm-9.35-7.02c-4.32 0-7.82-3.5-7.82-7.82s3.5-7.82 7.82-7.82S18.13 22.84 18.13 26.34s-3.5 7.82-7.82 7.82zm.18 3.708c2.48.43 5.06.656 7.71.656 4.71 0 9.12-1.02 13.06-2.855-3.05 3.49-8.5 8.018-14.77 8.018-4.32 0-7.82-3.5-7.82-7.82 0-1.22.28-2.37.78-3.39L10.49 39.052z" fill="#FFFFFF"/>
+                </svg>
+                <span class="text-xl font-bold text-slate-200">GameVerse</span>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <p class="text-xs text-slate-500 max-w-lg mb-4 md:mb-0">
+                    &copy; 2025 GameVerse Corporation. Semua hak dilindungi undang-undang. Semua merek dagang adalah milik dari pemiliknya masing-masing di AS dan negara lain.
+                    Ini adalah klon yang dibuat untuk tujuan portofolio dan tidak berafiliasi dengan Valve Corporation.
+                </p>
+                
+                <!-- Tautan Teks Footer -->
+                <div class="flex flex-wrap justify-center md:justify-end space-x-4 text-xs text-slate-400">
+                    <a href="#" class="hover:text-white transition">Kebijakan Privasi</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-white transition">Legal</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-white transition">Perjanjian Pelanggan</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-white transition">Pengembalian Dana</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
